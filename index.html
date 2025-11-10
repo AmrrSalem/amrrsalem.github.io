@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Amr Salem - Senior Python Engineer & Data Scientist with 10+ years experience. Specializing in machine learning, fraud detection, and data-driven solutions across telecom, healthcare, and e-commerce.">
-    <meta name="keywords" content="Amr Salem, Python Engineer, Data Scientist, Machine Learning, Fraud Detection, IoT, Cairo University, Data Analytics, Software Engineering, Electrical Engineering">
+    <meta name="description" content="Amr Salem - Senior Python Engineer & Data Scientist with 10+ years experience. Specializing in machine learning, fraud detection, and data-driven solutions. Based in Egypt, available for remote work globally.">
+    <meta name="keywords" content="Amr Salem, Python Engineer, Data Scientist, Machine Learning, Fraud Detection, IoT, Cairo University, Egypt, مهندس بايثون, علم البيانات, التعلم الآلي, مصر, القاهرة, Data Analytics, Software Engineering, Electrical Engineering, Remote Data Scientist, Middle East Tech, Gulf Region">
     <meta name="author" content="Amr Salem">
+    <meta name="geo.region" content="EG">
+    <meta name="geo.placename" content="Egypt">
     <meta property="og:title" content="Amr Salem - Senior Python Engineer & Data Scientist">
-    <meta property="og:description" content="10+ years of Python engineering expertise transitioning to cutting-edge data science. Building ML solutions for fraud detection, customer analytics, and business intelligence.">
+    <meta property="og:description" content="10+ years of Python engineering expertise transitioning to cutting-edge data science. Building ML solutions for fraud detection, customer analytics, and business intelligence. Available for remote opportunities globally.">
     <meta property="og:type" content="website">
-    <title>Amr Salem - Senior Python Engineer & Data Scientist</title>
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="ar_EG">
+    <title>Amr Salem - Senior Python Engineer & Data Scientist | Egypt</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -25,17 +29,17 @@
         }
 
         :root {
-            --primary-color: #2563eb;
-            --secondary-color: #1e40af;
-            --accent-color: #f59e0b;
+            --primary-color: #0f4c81;
+            --secondary-color: #0a3a5e;
+            --accent-color: #0891b2;
             --text-dark: #1f2937;
             --text-light: #6b7280;
             --bg-light: #f9fafb;
             --bg-white: #ffffff;
             --border-color: #e5e7eb;
             --success-color: #10b981;
-            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-primary: linear-gradient(135deg, #0f4c81 0%, #0891b2 100%);
+            --gradient-secondary: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
             --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
             --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
             --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
@@ -255,7 +259,7 @@
             opacity: 0.95;
             font-weight: 600;
             animation: fadeInUp 0.8s ease 0.2s both;
-            color: #fbbf24;
+            color: #06b6d4;
         }
 
         .hero-content p {
@@ -433,8 +437,8 @@
             right: 0;
             height: 100%;
             background-image:
-                radial-gradient(circle at 20% 30%, rgba(102, 126, 234, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(118, 75, 162, 0.03) 0%, transparent 50%);
+                radial-gradient(circle at 20% 30%, rgba(15, 76, 129, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(8, 145, 178, 0.03) 0%, transparent 50%);
             pointer-events: none;
         }
 
@@ -500,10 +504,9 @@
 
         /* About Section */
         .about-content {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 4rem;
-            align-items: start;
+            display: block;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .about-image-container {
@@ -536,7 +539,7 @@
             right: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
+            background: linear-gradient(135deg, rgba(15, 76, 129, 0.3) 0%, rgba(8, 145, 178, 0.3) 100%);
             animation: rotate 20s linear infinite;
             z-index: 1;
         }
@@ -545,7 +548,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            border: 3px solid rgba(102, 126, 234, 0.3);
+            border: 3px solid rgba(15, 76, 129, 0.3);
             border-radius: 20px;
             z-index: 2;
         }
@@ -581,9 +584,10 @@
 
         .about-text p {
             color: var(--text-light);
-            line-height: 1.9;
+            line-height: 2;
             margin-bottom: 1.5rem;
-            font-size: 1.05rem;
+            font-size: 1.125rem;
+            font-weight: 400;
         }
 
         .highlight-box {
@@ -612,7 +616,7 @@
         }
 
         .highlight-box li i {
-            color: var(--accent-color);
+            color: #06b6d4;
         }
 
         /* Skills Section */
@@ -715,21 +719,20 @@
         }
 
         .timeline-item {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            display: flex;
+            justify-content: center;
             margin-bottom: 4rem;
             position: relative;
-            min-height: 200px;
         }
 
-        .timeline-item:nth-child(even) .timeline-content {
-            grid-column: 1;
-            grid-row: 1;
+        .timeline-item:nth-child(odd) {
+            justify-content: flex-end;
+            padding-right: calc(50% + 2rem);
         }
 
-        .timeline-item:nth-child(even) .timeline-empty {
-            grid-column: 2;
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+            padding-left: calc(50% + 2rem);
         }
 
         .timeline-content {
@@ -739,6 +742,8 @@
             box-shadow: var(--shadow-md);
             position: relative;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            max-width: 550px;
+            width: 100%;
         }
 
         .timeline-content:hover {
@@ -792,8 +797,10 @@
 
         .timeline-content p {
             color: var(--text-light);
-            line-height: 1.8;
+            line-height: 1.9;
             margin-bottom: 1rem;
+            font-size: 1.0625rem;
+            font-weight: 400;
         }
 
         .timeline-content ul {
@@ -806,12 +813,18 @@
             color: var(--text-light);
             display: flex;
             gap: 0.75rem;
+            font-size: 1rem;
+            line-height: 1.8;
         }
 
         .timeline-content li::before {
             content: '▹';
             color: var(--primary-color);
             font-weight: bold;
+        }
+
+        .timeline-empty {
+            display: none;
         }
 
         /* Education Section */
@@ -869,7 +882,9 @@
 
         .education-card p {
             color: var(--text-light);
-            line-height: 1.8;
+            line-height: 1.9;
+            font-size: 1.0625rem;
+            font-weight: 400;
         }
 
         /* Certifications Section */
@@ -899,7 +914,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(15, 76, 129, 0.1), transparent);
             transition: left 0.5s ease;
         }
 
@@ -975,7 +990,7 @@
         .project-card:hover {
             transform: translateY(-10px);
             box-shadow: var(--shadow-lg);
-            border-color: rgba(102, 126, 234, 0.2);
+            border-color: rgba(15, 76, 129, 0.2);
         }
 
         .project-card:hover::before {
@@ -1033,7 +1048,9 @@
         .project-content p {
             color: var(--text-light);
             margin-bottom: 1.5rem;
-            line-height: 1.7;
+            line-height: 1.9;
+            font-size: 1.0625rem;
+            font-weight: 400;
         }
 
         .project-tech {
@@ -1098,8 +1115,9 @@
         .contact-content p {
             color: var(--text-light);
             margin-bottom: 3rem;
-            font-size: 1.15rem;
-            line-height: 1.8;
+            font-size: 1.125rem;
+            line-height: 2;
+            font-weight: 400;
         }
 
         .contact-info {
@@ -1296,13 +1314,9 @@
             }
 
             .timeline-item {
-                grid-template-columns: 1fr;
-                padding-left: 50px;
-                min-height: auto;
-            }
-
-            .timeline-item:nth-child(even) .timeline-content {
-                grid-column: 1;
+                padding-left: 50px !important;
+                padding-right: 0 !important;
+                justify-content: flex-start !important;
             }
 
             .timeline-content::before {
@@ -1629,11 +1643,6 @@
                             <li><i class="fas fa-check-circle"></i> Cross-industry experience (telecom, healthcare, e-commerce)</li>
                             <li><i class="fas fa-check-circle"></i> Passionate about continuous learning (Coursera, Udacity)</li>
                         </ul>
-                    </div>
-                </div>
-                <div class="about-image-container">
-                    <div class="about-image-wrapper">
-                        <img src="imgs/Amr.png" alt="Amr Salem Professional" loading="lazy">
                     </div>
                 </div>
             </div>
