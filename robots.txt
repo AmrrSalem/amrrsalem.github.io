@@ -1,0 +1,32 @@
+# robots.txt for https://amrrsalem.github.io/
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://amrrsalem.github.io/sitemap.xml
+
+# Crawl-delay (optional - helps with rate limiting)
+Crawl-delay: 1
+
+# Disallow specific paths (if any)
+# Disallow: /private/
+# Disallow: /temp/
+
+# Allow all assets
+Allow: /assets/
+Allow: /imgs/
+Allow: /blog/
+
+# Popular search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /

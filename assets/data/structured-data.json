@@ -1,0 +1,92 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Amr Salem",
+  "alternateName": "Amr Salem",
+  "url": "https://amrrsalem.github.io",
+  "image": "https://amrrsalem.github.io/imgs/Amr.png",
+  "sameAs": [
+    "https://github.com/AmrrSalem",
+    "https://www.linkedin.com/in/amr-salem",
+    "https://www.upwork.com/freelancers/~amrsalem"
+  ],
+  "jobTitle": [
+    "Senior Python Software Engineer",
+    "Data Science Specialist",
+    "Machine Learning Engineer"
+  ],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Freelance"
+  },
+  "alumniOf": [
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "Cairo University",
+      "sameAs": "https://cu.edu.eg"
+    }
+  ],
+  "knowsAbout": [
+    "Data Science",
+    "Machine Learning",
+    "Python Programming",
+    "Deep Learning",
+    "Natural Language Processing",
+    "Computer Vision",
+    "IoT",
+    "Fraud Detection",
+    "Customer Analytics",
+    "Data Visualization",
+    "Statistical Analysis",
+    "Predictive Modeling",
+    "TensorFlow",
+    "PyTorch",
+    "Scikit-learn",
+    "Pandas",
+    "SQL",
+    "AWS",
+    "Streamlit"
+  ],
+  "knowsLanguage": [
+    {
+      "@type": "Language",
+      "name": "English",
+      "alternateName": "en"
+    },
+    {
+      "@type": "Language",
+      "name": "Arabic",
+      "alternateName": "ar"
+    }
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Cairo",
+    "addressCountry": "EG"
+  },
+  "email": "contact@amrsalem.com",
+  "telephone": "+20-XXX-XXX-XXXX",
+  "description": "Senior Python Software Engineer with 10+ years of experience transitioning to Data Science. Specializing in machine learning, fraud detection systems, customer analytics, and IoT-enhanced solutions. Currently pursuing Post Graduate Diploma in Data Science at Cairo University.",
+  "hasCredential": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "degree",
+      "name": "Post Graduate Diploma in Data Science",
+      "educationalLevel": "Graduate",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "Cairo University"
+      }
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "degree",
+      "name": "Bachelor of Science in Electrical Engineering",
+      "educationalLevel": "Undergraduate",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "Cairo University"
+      }
+    }
+  ]
+}

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="What Amr Salem is currently working on - Projects, Learning, and Focus Areas">
+    <title>Now - Amr Salem</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/enhancements.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #0f4c81;
+            --accent-color: #0891b2;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.8;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+
+        nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-dark);
+            font-size: 1.25rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .last-updated {
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        .content-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .content-card h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .content-card h2 i {
+            color: var(--accent-color);
+        }
+
+        .content-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .content-card li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--text-light);
+        }
+
+        .content-card li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            color: white;
+        }
+
+        .highlight h2 {
+            color: white;
+        }
+
+        .progress-item {
+            margin: 1.5rem 0;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar {
+            background: rgba(255,255,255,0.2);
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: rgba(255,255,255,0.9);
+            height: 100%;
+            transition: width 1s ease;
+        }
+
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .content-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Amr Salem</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="blog/index.html">Blog</a></li>
+                <li><a href="now.html">Now</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>What I'm Doing Now</h1>
+            <p class="last-updated">
+                <i class="fas fa-clock"></i> Last updated: January 2025 | Cairo, Egypt
+            </p>
+            <p style="margin-top: 1rem; color: var(--text-light);">
+                This page follows the <a href="https://nownownow.com/about" target="_blank" style="color: var(--accent-color);">/now movement</a>
+                by Derek Sivers
+            </p>
+        </div>
+
+        <div class="content-card highlight">
+            <h2><i class="fas fa-graduation-cap"></i> Academic Focus</h2>
+            <div class="progress-item">
+                <div class="progress-header">
+                    <span><strong>Post Graduate Diploma in Data Science</strong> - Cairo University</span>
+                    <span>95%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 95%"></div>
+                </div>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;">Expected Graduation: January 2026 | Current GPA: 3.63/4.0</p>
+            </div>
+
+            <div class="progress-item">
+                <div class="progress-header">
+                    <span><strong>Thesis Research:</strong> IoT-Enhanced Credit Card Fraud Detection Systems</span>
+                    <span>80%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 80%"></div>
+                </div>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;">Developing hybrid ML approaches with IoT integration for real-time fraud detection</p>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2><i class="fas fa-briefcase"></i> Professional Activities</h2>
+            <ul>
+                <li><strong>Building Freelance Portfolio</strong> on Upwork with focus on data science and ML engineering projects</li>
+                <li><strong>Developing Production-Ready ML Solutions:</strong> Customer analytics, fraud detection, and predictive modeling</li>
+                <li><strong>Remote Data Science Opportunities:</strong> Open to contracts and full-time positions globally</li>
+                <li><strong>Expanding Technical Stack:</strong> Deep learning frameworks, cloud ML deployment (AWS SageMaker), and MLOps practices</li>
+            </ul>
+        </div>
+
+        <div class="content-card">
+            <h2><i class="fas fa-code"></i> Current Projects</h2>
+            <ul>
+                <li><strong>Thesis Implementation:</strong> Hybrid fraud detection system using ensemble methods and neural networks</li>
+                <li><strong>Portfolio Enhancement:</strong> Building advanced Streamlit dashboards with real-time ML predictions</li>
+                <li><strong>NLP Research:</strong> Arabic sentiment analysis models for MENA market applications</li>
+                <li><strong>Computer Vision:</strong> Exploring object detection for retail analytics use cases</li>
+            </ul>
+        </div>
+
+        <div class="content-card">
+            <h2><i class="fas fa-book-reader"></i> Learning & Development</h2>
+            <ul>
+                <li><strong>Deep Learning Specialization:</strong> Advanced architectures (Transformers, GANs, Autoencoders)</li>
+                <li><strong>MLOps & Deployment:</strong> Docker, Kubernetes, CI/CD for ML models</li>
+                <li><strong>Cloud Platforms:</strong> AWS ML services, Azure ML, and serverless architectures</li>
+                <li><strong>Research Papers:</strong> Latest developments in fraud detection and anomaly detection techniques</li>
+                <li><strong>Arabic NLP:</strong> Building language models for Arabic text processing</li>
+            </ul>
+        </div>
+
+        <div class="content-card">
+            <h2><i class="fas fa-bullseye"></i> 2025 Goals</h2>
+            <ul>
+                <li>Complete PG Diploma with honors (target GPA: 3.7+)</li>
+                <li>Publish thesis research in international conference/journal</li>
+                <li>Secure 3-5 high-quality data science projects on Upwork</li>
+                <li>Build comprehensive ML portfolio with 10+ production-ready projects</li>
+                <li>Transition to full-time data science role with international company</li>
+                <li>Launch technical blog with 12+ in-depth articles</li>
+                <li>Earn AWS ML Specialty certification</li>
+            </ul>
+        </div>
+
+        <div class="content-card">
+            <h2><i class="fas fa-map-marker-alt"></i> Location & Availability</h2>
+            <ul>
+                <li><strong>Based in:</strong> Cairo, Egypt 🇪🇬</li>
+                <li><strong>Working hours:</strong> Flexible, with availability for global time zones</li>
+                <li><strong>Languages:</strong> English (Professional), Arabic (Native)</li>
+                <li><strong>Open to:</strong> Remote work, freelance projects, full-time opportunities worldwide</li>
+                <li><strong>Preferred regions:</strong> Global remote, MENA region, Europe, North America</li>
+            </ul>
+        </div>
+
+        <div class="content-card" style="text-align: center; background: var(--bg-light);">
+            <p style="color: var(--text-light); margin-bottom: 1rem;">
+                <i class="fas fa-envelope"></i> Want to collaborate or have questions?
+            </p>
+            <a href="index.html#contact" style="display: inline-block; background: var(--accent-color); color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: transform 0.3s;">
+                Get In Touch <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Amr Salem. This page inspired by the <a href="https://nownownow.com" target="_blank" style="color: var(--accent-color);">now page movement</a></p>
+    </footer>
+
+    <script src="assets/js/enhancements.js"></script>
+</body>
+</html>
