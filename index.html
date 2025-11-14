@@ -1810,6 +1810,48 @@
             }
         }
     </style>
+    <!-- AOS (Animate On Scroll) Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom Enhancements CSS -->
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0f4c81">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Amr Salem">
+    <!-- JSON-LD Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Amr Salem",
+      "url": "https://amrrsalem.github.io",
+      "image": "https://amrrsalem.github.io/imgs/Amr.png",
+      "jobTitle": ["Senior Python Software Engineer", "Data Science Specialist", "Machine Learning Engineer"],
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Cairo University"
+      },
+      "knowsAbout": ["Data Science", "Machine Learning", "Python", "Deep Learning", "NLP", "IoT", "Fraud Detection"],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Cairo",
+        "addressCountry": "EG"
+      }
+    }
+    </script>
+    
+    <!-- Google Analytics -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID');
+    </script> -->
+    <link rel="stylesheet" href="assets/css/enhancements.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -1826,10 +1868,15 @@
                 <li><a href="#reviews" class="nav-link">Reviews</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <div class="hamburger" id="hamburger">
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
+            </div>
             </div>
         </div>
     </nav>
@@ -1887,7 +1934,7 @@
     </section>
 
     <!-- About Section -->
-    <section class="section fade-in-section" id="about">
+    <section class="section fade-in-section" id="about" data-aos="fade-up">
         <div class="section-container">
             <h2 class="section-title">About Me</h2>
             <p class="section-subtitle">From Software Engineering to Data Science Innovation</p>
@@ -2093,7 +2140,7 @@
     </section>
 
     <!-- Experience Section -->
-    <section class="section fade-in-section" id="experience">
+    <section class="section fade-in-section" id="experience" data-aos="fade-up">
         <div class="section-container">
             <h2 class="section-title">Professional Experience</h2>
             <p class="section-subtitle">A track record of delivering impactful data solutions across various industries</p>
@@ -2320,7 +2367,7 @@
             <p class="section-subtitle">Showcasing real-world data science solutions with measurable impact</p>
             <div class="projects-grid">
                 <!-- Thesis Project - Featured -->
-                <div class="project-card">
+                <div class="project-card" data-category="iot ml dl">
                     <div class="project-image">
                         <i class="fas fa-shield-alt"></i>
                     </div>
@@ -2343,7 +2390,7 @@
                 </div>
 
                 <!-- Project 1 -->
-                <div class="project-card">
+                <div class="project-card" data-category="ml analytics">
                     <div class="project-image">
                         <i class="fas fa-user-slash"></i>
                     </div>
@@ -2371,7 +2418,7 @@
                 </div>
 
                 <!-- Project 2 -->
-                <div class="project-card">
+                <div class="project-card" data-category="analytics ml">
                     <div class="project-image">
                         <i class="fas fa-chart-line"></i>
                     </div>
@@ -2399,7 +2446,7 @@
                 </div>
 
                 <!-- Project 3 -->
-                <div class="project-card">
+                <div class="project-card" data-category="nlp ml">
                     <div class="project-image">
                         <i class="fas fa-comments"></i>
                     </div>
@@ -2427,7 +2474,7 @@
                 </div>
 
                 <!-- Project 4 -->
-                <div class="project-card">
+                <div class="project-card" data-category="analytics ml">
                     <div class="project-image">
                         <i class="fas fa-truck"></i>
                     </div>
@@ -2905,6 +2952,19 @@
                     }, index * 200);
                 }
             });
+    <!-- AOS Library JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+    </script>
+    
+    <!-- Custom Enhancements JS -->
+    <script src="assets/js/skills-chart.js"></script>
+    <script src="assets/js/enhancements.js"></script>
         };
 
         window.addEventListener('scroll', animateTimeline);
