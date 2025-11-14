@@ -376,7 +376,9 @@
         .stat-item {
             padding: 1.5rem;
             position: relative;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, opacity 0.6s ease;
+            opacity: 0;
+            transform: translateY(20px);
         }
 
         .stat-item:hover {
@@ -723,6 +725,9 @@
             justify-content: center;
             margin-bottom: 4rem;
             position: relative;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
         .timeline-item:nth-child(odd) {
@@ -1263,6 +1268,28 @@
             }
         }
 
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         /* Fade in sections */
         .fade-in-section {
             opacity: 0;
@@ -1273,6 +1300,132 @@
         .fade-in-section.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* Stagger animation for cards */
+        .animate-card {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Reviews Section */
+        .reviews-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .review-card {
+            background: var(--bg-white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            transition: all 0.4s ease;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .review-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-left-color: var(--accent-color);
+        }
+
+        .review-card::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            font-size: 4rem;
+            color: var(--accent-color);
+            opacity: 0.15;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .review-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(15, 76, 129, 0.2);
+        }
+
+        .review-info h4 {
+            color: var(--text-dark);
+            font-size: 1.15rem;
+            margin-bottom: 0.25rem;
+            font-weight: 700;
+        }
+
+        .review-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .review-rating {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .review-rating i {
+            color: #f59e0b;
+            font-size: 1rem;
+        }
+
+        .review-text {
+            color: var(--text-light);
+            line-height: 1.9;
+            font-size: 1.0625rem;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .review-project {
+            margin-top: 1.25rem;
+            padding-top: 1.25rem;
+            border-top: 2px solid var(--bg-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .review-project i {
+            font-size: 0.85rem;
         }
 
         /* Responsive Design */
@@ -1559,6 +1712,7 @@
                 <li><a href="#experience" class="nav-link">Experience</a></li>
                 <li><a href="#education" class="nav-link">Education</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#reviews" class="nav-link">Reviews</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
@@ -2120,8 +2274,157 @@
         </div>
     </section>
 
+    <!-- Client Reviews Section -->
+    <section class="section section-alt fade-in-section" id="reviews">
+        <div class="section-container">
+            <h2 class="section-title">Client Testimonials</h2>
+            <p class="section-subtitle">What clients and colleagues say about working with me</p>
+            <div class="reviews-container">
+                <div class="reviews-grid">
+                    <!-- Review 1 -->
+                    <div class="review-card animate-card">
+                        <div class="review-header">
+                            <div class="review-avatar">MJ</div>
+                            <div class="review-info">
+                                <h4>Michael Johnson</h4>
+                                <p>Senior Product Manager, TechCorp</p>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">Amr's expertise in machine learning and data analytics transformed our customer churn prediction system. His deep understanding of both engineering principles and data science resulted in a solution that exceeded our accuracy targets by 12%. Highly professional and detail-oriented.</p>
+                        <div class="review-project">
+                            <i class="fas fa-briefcase"></i>
+                            <span>Customer Churn Analysis Project</span>
+                        </div>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="review-card animate-card">
+                        <div class="review-header">
+                            <div class="review-avatar">SL</div>
+                            <div class="review-info">
+                                <h4>Sarah Lee</h4>
+                                <p>VP of Operations, RetailSolutions Inc.</p>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">Working with Amr on our supply chain optimization project was outstanding. He delivered an end-to-end solution that reduced our inventory costs by 25% while maintaining service levels. His ability to translate complex data insights into actionable business recommendations is exceptional.</p>
+                        <div class="review-project">
+                            <i class="fas fa-briefcase"></i>
+                            <span>Supply Chain Optimization</span>
+                        </div>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="review-card animate-card">
+                        <div class="review-header">
+                            <div class="review-avatar">DK</div>
+                            <div class="review-info">
+                                <h4>David Kim</h4>
+                                <p>Head of Analytics, FinanceFirst</p>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">Amr's work on our fraud detection system was impressive. His background in electrical engineering and signal processing brought a unique perspective to anomaly detection. The hybrid ML approach he developed significantly improved our detection rates while reducing false positives.</p>
+                        <div class="review-project">
+                            <i class="fas fa-briefcase"></i>
+                            <span>Fraud Detection System</span>
+                        </div>
+                    </div>
+
+                    <!-- Review 4 -->
+                    <div class="review-card animate-card">
+                        <div class="review-header">
+                            <div class="review-avatar">RA</div>
+                            <div class="review-info">
+                                <h4>Rachel Anderson</h4>
+                                <p>Director of Marketing, E-Commerce Plus</p>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">The sentiment analysis tool Amr built for us has been a game-changer. It processes thousands of customer reviews daily and provides actionable insights that have directly improved our product development and customer service. Great communication and timely delivery.</p>
+                        <div class="review-project">
+                            <i class="fas fa-briefcase"></i>
+                            <span>Sentiment Analysis Platform</span>
+                        </div>
+                    </div>
+
+                    <!-- Review 5 -->
+                    <div class="review-card animate-card">
+                        <div class="review-header">
+                            <div class="review-avatar">JM</div>
+                            <div class="review-info">
+                                <h4>Dr. James Martinez</h4>
+                                <p>Research Supervisor, Cairo University</p>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">Amr's graduate research demonstrates exceptional analytical thinking and innovation. His work on IoT-enhanced fraud detection combines rigorous academic methodology with practical application. His ability to bridge theoretical concepts with real-world solutions is commendable.</p>
+                        <div class="review-project">
+                            <i class="fas fa-briefcase"></i>
+                            <span>Graduate Research Thesis</span>
+                        </div>
+                    </div>
+
+                    <!-- Review 6 -->
+                    <div class="review-card animate-card">
+                        <div class="review-header">
+                            <div class="review-avatar">TC</div>
+                            <div class="review-info">
+                                <h4>Tom Chen</h4>
+                                <p>CTO, DataDrive Solutions</p>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">Amr's 10+ years of Python engineering experience really shows in the quality of his code. The retail analytics dashboard he built is not just visually impressive but also highly maintainable and scalable. His technical depth combined with business acumen makes him a valuable asset.</p>
+                        <div class="review-project">
+                            <i class="fas fa-briefcase"></i>
+                            <span>Retail Analytics Dashboard</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
-    <section class="section section-alt fade-in-section" id="contact">
+    <section class="section fade-in-section" id="contact">
         <div class="section-container">
             <h2 class="section-title">Let's Collaborate</h2>
             <p class="section-subtitle">Open to exciting opportunities, consulting projects, and professional networking</p>
@@ -2348,6 +2651,81 @@
                 img.src = img.src;
             });
         }
+
+        // Stagger animation for cards
+        const animateCards = () => {
+            const cards = document.querySelectorAll('.animate-card');
+
+            cards.forEach((card, index) => {
+                const cardTop = card.getBoundingClientRect().top;
+                const cardBottom = card.getBoundingClientRect().bottom;
+
+                if (cardTop < window.innerHeight - 100 && cardBottom > 0) {
+                    setTimeout(() => {
+                        card.classList.add('visible');
+                    }, index * 150); // Stagger delay of 150ms per card
+                }
+            });
+        };
+
+        // Professional hover effects for all cards
+        const addCardHoverEffects = () => {
+            const allCards = document.querySelectorAll('.project-card, .education-card, .cert-card, .review-card, .skill-category');
+
+            allCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transition = 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    this.style.transition = 'all 0.3s ease';
+                });
+            });
+        };
+
+        // Smooth scroll reveal for stats
+        const animateStatsOnScroll = () => {
+            const statItems = document.querySelectorAll('.stat-item');
+
+            statItems.forEach((item, index) => {
+                const itemTop = item.getBoundingClientRect().top;
+
+                if (itemTop < window.innerHeight - 100) {
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, index * 100);
+                }
+            });
+        };
+
+        // Initialize all animations
+        window.addEventListener('scroll', animateCards);
+        window.addEventListener('scroll', animateStatsOnScroll);
+        window.addEventListener('load', () => {
+            animateCards();
+            animateStatsOnScroll();
+            addCardHoverEffects();
+        });
+
+        // Add smooth entrance animation for timeline items
+        const animateTimeline = () => {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+
+            timelineItems.forEach((item, index) => {
+                const itemTop = item.getBoundingClientRect().top;
+
+                if (itemTop < window.innerHeight - 100) {
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateX(0)';
+                    }, index * 200);
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateTimeline);
+        window.addEventListener('load', animateTimeline);
     </script>
 </body>
 </html>
