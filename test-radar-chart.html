@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills Radar Chart Test</title>
+    <style>
+        :root {
+            --primary-color: #0891b2;
+            --secondary-color: #0f4c81;
+            --accent-color: #0891b2;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-white: #ffffff;
+            --bg-light: #f9fafb;
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #f3f4f6;
+            padding: 2rem;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+        }
+
+        .section-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .test-info {
+            background: #dbeafe;
+            border-left: 4px solid #3b82f6;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+        }
+
+        .test-info h3 {
+            margin-top: 0;
+            color: #1e40af;
+        }
+
+        .test-info ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .test-info li {
+            margin: 0.25rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Skills Radar Chart Test Page</h1>
+
+        <div class="test-info">
+            <h3>Test Information</h3>
+            <p>This page tests the skills radar chart implementation. The chart should:</p>
+            <ul>
+                <li>✅ Display a radar chart with 10 skill categories</li>
+                <li>✅ Show proficiency levels from 0-100%</li>
+                <li>✅ Be responsive and maintain aspect ratio</li>
+                <li>✅ Include smooth animations on load</li>
+                <li>✅ Show tooltips on hover</li>
+                <li>✅ Load Chart.js library dynamically</li>
+            </ul>
+        </div>
+
+        <section class="section" id="skills">
+            <div class="section-container">
+                <h2 class="section-title">Technical Expertise</h2>
+                <p class="section-subtitle">Comprehensive skill set across data science, analytics, and business intelligence</p>
+                <!-- The radar chart will be inserted here by skills-chart.js -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Load the skills chart script -->
+    <script src="assets/js/skills-chart.js"></script>
+</body>
+</html>
