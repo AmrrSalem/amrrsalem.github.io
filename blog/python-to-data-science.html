@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lessons learned from 10 years as a Python engineer transitioning to data science. Practical advice on skills, mindset shifts, and leveraging engineering experience.">
+    <meta name="keywords" content="Python, Data Science, Career Transition, Software Engineering, Machine Learning, Career Development">
+    <meta name="author" content="Amr Salem">
+    <title>From Python Engineer to Data Scientist: Lessons from 10 Years in Production | Amr Salem</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Prism.js for Syntax Highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/enhancements.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #0f4c81;
+            --secondary-color: #0a3a5e;
+            --accent-color: #0891b2;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --border-color: #e5e7eb;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --code-bg: #2d2d2d;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.8;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Article Header */
+        .article-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            color: white;
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+        }
+
+        .article-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.95;
+        }
+
+        .article-tags {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Article Content */
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            background: white;
+            margin-top: -2rem;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+        }
+
+        .article-content h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .article-content h3 {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+        }
+
+        .article-content ul, .article-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+            font-size: 1.05rem;
+        }
+
+        .article-content strong {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(15, 76, 129, 0.05) 0%, rgba(8, 145, 178, 0.05) 100%);
+            border-left: 4px solid var(--accent-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .highlight-box h4 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .warning-box {
+            background: rgba(245, 158, 11, 0.05);
+            border-left: 4px solid var(--warning-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .warning-box h4 {
+            color: var(--warning-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        /* Code Blocks */
+        pre {
+            background: var(--code-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        code {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+        }
+
+        p code {
+            background: rgba(15, 76, 129, 0.1);
+            color: var(--primary-color);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+            margin: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--accent-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 70px;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            left: 15px;
+            width: 32px;
+            height: 32px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .timeline-content {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .timeline-content h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Author Section */
+        .author-section {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: var(--bg-light);
+            border-radius: 12px;
+        }
+
+        .author-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .author-section p {
+            color: var(--text-light);
+        }
+
+        /* Share Buttons */
+        .share-section {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            text-align: center;
+            background: white;
+            border-radius: 12px;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .share-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .share-btn.twitter {
+            background: #1DA1F2;
+        }
+
+        .share-btn.linkedin {
+            background: #0077B5;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .article-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .article-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .article-content h2 {
+                font-size: 1.6rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .timeline::before {
+                left: 15px;
+            }
+
+            .timeline-item {
+                padding-left: 50px;
+            }
+
+            .timeline-icon {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="../index.html" class="logo">Amr Salem</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#projects">Projects</a></li>
+                <li><a href="index.html">Blog</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Article Header -->
+    <header class="article-header">
+        <h1>From Python Engineer to Data Scientist: Lessons from 10 Years in Production</h1>
+        <div class="article-meta">
+            <span><i class="fas fa-calendar"></i> November 15, 2025</span>
+            <span><i class="fas fa-clock"></i> 10 min read</span>
+            <span><i class="fas fa-user"></i> Amr Salem</span>
+        </div>
+        <div class="article-tags">
+            <span class="tag"><i class="fab fa-python"></i> Python</span>
+            <span class="tag"><i class="fas fa-chart-line"></i> Data Science</span>
+            <span class="tag"><i class="fas fa-briefcase"></i> Career Development</span>
+            <span class="tag"><i class="fas fa-brain"></i> Machine Learning</span>
+        </div>
+    </header>
+
+    <!-- Article Content -->
+    <article class="article-content">
+        <p class="lead" style="font-size: 1.25rem; color: var(--text-light); font-style: italic;">
+            After a decade of building production Python systems across telecommunications, healthcare, and e-commerce, I decided to pivot into data science. This transition revealed surprising advantages, unexpected challenges, and valuable lessons I wish I'd known from day one. Here's my honest take on leveraging software engineering experience for a data science career.
+        </p>
+
+        <h2><i class="fas fa-route"></i> Why Make the Transition?</h2>
+
+        <p>The decision to transition from software engineering to data science wasn't made lightly. After 10 years of building scalable systems, APIs, and backend infrastructure, I found myself increasingly drawn to a different set of questions:</p>
+
+        <ul>
+            <li><strong>Impact through insights:</strong> Instead of just building systems, I wanted to uncover patterns that drive business decisions</li>
+            <li><strong>Intellectual curiosity:</strong> The mathematical foundations of ML and statistics fascinated me</li>
+            <li><strong>Future-proofing:</strong> AI and data science are reshaping every industry—I wanted to be at the forefront</li>
+            <li><strong>New challenges:</strong> After solving similar problems for years, I craved fresh learning opportunities</li>
+        </ul>
+
+        <div class="highlight-box">
+            <h4><i class="fas fa-quote-left"></i> The Revelation</h4>
+            <p>"The most powerful insight came during a project where I built a recommendation engine. I realized I enjoyed designing the algorithm and analyzing user behavior patterns more than implementing the REST API. That's when I knew it was time to transition."</p>
+        </div>
+
+        <h2><i class="fas fa-balance-scale"></i> The Skills Gap: What Transfers and What Doesn't</h2>
+
+        <h3>What Software Engineers Already Have</h3>
+
+        <p>Coming from a strong engineering background gave me several unexpected advantages:</p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-icon"><i class="fas fa-code"></i></div>
+                <div class="timeline-content">
+                    <h4>Production-Ready Code</h4>
+                    <p>Most data science tutorials teach concepts, not production systems. My experience with testing, logging, error handling, and deployment was immediately valuable. While bootcamp graduates struggled to productionize models, I knew how to build robust ML pipelines from day one.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-icon"><i class="fas fa-database"></i></div>
+                <div class="timeline-content">
+                    <h4>Data Engineering Foundations</h4>
+                    <p>Understanding databases, ETL pipelines, and data architecture is half the battle in data science. My SQL expertise and experience with PostgreSQL, MongoDB, and Redis translated directly to wrangling real-world datasets.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-icon"><i class="fas fa-rocket"></i></div>
+                <div class="timeline-content">
+                    <h4>Performance Optimization</h4>
+                    <p>Profiling code, optimizing algorithms, and thinking about time/space complexity became crucial when training models on large datasets. My optimization mindset helped me write efficient pandas operations and vectorize NumPy computations.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-icon"><i class="fas fa-project-diagram"></i></div>
+                <div class="timeline-content">
+                    <h4>System Design Thinking</h4>
+                    <p>Designing end-to-end ML systems requires the same architectural thinking as building distributed systems. Understanding trade-offs, scalability, and modularity gave me an edge in MLOps and model deployment.</p>
+                </div>
+            </div>
+        </div>
+
+        <h3>The Hard Truth: What You Still Need to Learn</h3>
+
+        <div class="warning-box">
+            <h4><i class="fas fa-exclamation-triangle"></i> Don't Underestimate These</h4>
+            <p>Engineering experience helps, but it doesn't replace domain-specific knowledge. Here are the skills I had to build from scratch:</p>
+        </div>
+
+        <ul>
+            <li><strong>Statistics and Probability:</strong> Understanding p-values, hypothesis testing, and statistical significance requires serious study</li>
+            <li><strong>Linear Algebra and Calculus:</strong> You can't truly understand ML without grasping the math behind gradient descent, matrix operations, and optimization</li>
+            <li><strong>Domain Expertise:</strong> Knowing which algorithm to use (and why) comes from understanding the problem space, not just coding ability</li>
+            <li><strong>Experimentation Mindset:</strong> Engineering is about deterministic solutions; data science embraces uncertainty and iteration</li>
+            <li><strong>Data Storytelling:</strong> Communicating insights to non-technical stakeholders is a skill engineers often overlook</li>
+        </ul>
+
+        <h2><i class="fas fa-lightbulb"></i> Key Lessons Learned</h2>
+
+        <h3>1. Your Engineering Background is a Superpower (Use It)</h3>
+
+        <p>Many data scientists struggle with software engineering best practices. Use this to your advantage:</p>
+
+        <pre><code class="language-python"># Instead of Jupyter notebook spaghetti code:
+# ❌ BAD: Everything in one massive notebook cell
+model = RandomForestClassifier()
+model.fit(X_train, y_train)
+predictions = model.predict(X_test)
+
+# ✅ GOOD: Modular, testable, reusable code
+from src.models.random_forest import FraudDetectionModel
+from src.features.engineering import TransactionFeatureEngineer
+from src.evaluation.metrics import calculate_classification_metrics
+
+class FraudDetectionPipeline:
+    """End-to-end fraud detection pipeline with proper separation of concerns"""
+
+    def __init__(self, config):
+        self.config = config
+        self.feature_engineer = TransactionFeatureEngineer()
+        self.model = FraudDetectionModel(config['model_params'])
+
+    def preprocess(self, raw_data):
+        """Reproducible preprocessing with validation"""
+        validated_data = self._validate_input(raw_data)
+        return self.feature_engineer.transform(validated_data)
+
+    def train(self, X_train, y_train):
+        """Training with logging and checkpointing"""
+        logger.info(f"Training model with {len(X_train)} samples")
+        self.model.fit(X_train, y_train)
+        self._save_checkpoint()
+
+    def evaluate(self, X_test, y_test):
+        """Comprehensive evaluation with multiple metrics"""
+        predictions = self.model.predict(X_test)
+        metrics = calculate_classification_metrics(y_test, predictions)
+
+        logger.info(f"Model Performance: {metrics}")
+        return metrics
+
+    def _validate_input(self, data):
+        """Input validation prevents silent failures"""
+        required_columns = self.config['required_features']
+        missing = set(required_columns) - set(data.columns)
+
+        if missing:
+            raise ValueError(f"Missing required columns: {missing}")
+
+        return data
+
+    def _save_checkpoint(self):
+        """Versioned model checkpoints for reproducibility"""
+        import joblib
+        from datetime import datetime
+
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        path = f"models/fraud_detector_{timestamp}.pkl"
+        joblib.dump(self.model, path)
+        logger.info(f"Model saved to {path}")
+</code></pre>
+
+        <h3>2. Embrace the Exploratory Nature of Data Science</h3>
+
+        <p>This was the hardest mindset shift for me. In engineering, requirements are clear and solutions are deterministic. In data science:</p>
+
+        <ul>
+            <li>You don't know if a model will work until you try it</li>
+            <li>Feature engineering is creative trial-and-error</li>
+            <li>Business questions evolve as you explore the data</li>
+            <li>Sometimes the answer is "the data doesn't support this hypothesis"</li>
+        </ul>
+
+        <p>Learning to be comfortable with ambiguity took time, but it made me a better problem solver.</p>
+
+        <h3>3. Communication is 50% of the Job</h3>
+
+        <p>The best model in the world is useless if stakeholders don't trust it or understand it. I learned to:</p>
+
+        <ul>
+            <li>Visualize results effectively (matplotlib, seaborn, Plotly became essential)</li>
+            <li>Explain technical concepts to non-technical audiences</li>
+            <li>Translate business questions into analytical problems</li>
+            <li>Build dashboards that tell a story, not just display numbers</li>
+        </ul>
+
+        <div class="highlight-box">
+            <h4><i class="fas fa-trophy"></i> Success Story</h4>
+            <p>During a customer churn prediction project, my initial model achieved 89% accuracy. But stakeholders didn't trust it because I couldn't explain <em>why</em> customers were churning. After implementing SHAP values for model interpretability and creating an interactive dashboard showing feature importance, adoption skyrocketed. The technical solution was 20% of the success—communication was 80%.</p>
+        </div>
+
+        <h3>4. Continuous Learning is Non-Negotiable</h3>
+
+        <p>The field evolves faster than any other I've worked in. My learning strategy:</p>
+
+        <ul>
+            <li><strong>Formal Education:</strong> Post Graduate Diploma in Data Science (Cairo University) - structured foundation</li>
+            <li><strong>Project-Based Learning:</strong> Kaggle competitions and real-world freelance projects</li>
+            <li><strong>Research Papers:</strong> Reading 2-3 papers weekly on arXiv keeps me current</li>
+            <li><strong>Community Engagement:</strong> Contributing to open-source ML libraries deepens understanding</li>
+            <li><strong>Teaching Others:</strong> Writing blog posts and mentoring solidifies my knowledge</li>
+        </ul>
+
+        <h3>5. Your Engineering Experience Makes You Valuable (But Different)</h3>
+
+        <p>I'm not competing with PhD statisticians or pure research scientists. My niche is:</p>
+
+        <ul>
+            <li><strong>Translating research to production:</strong> Taking papers and building deployable systems</li>
+            <li><strong>End-to-end ownership:</strong> From data collection to model deployment and monitoring</li>
+            <li><strong>MLOps and infrastructure:</strong> Building scalable ML pipelines that actually work in production</li>
+            <li><strong>Cross-functional collaboration:</strong> Bridging the gap between data scientists and engineers</li>
+        </ul>
+
+        <h2><i class="fas fa-map-marked-alt"></i> Practical Roadmap for Engineers Transitioning to Data Science</h2>
+
+        <h3>Phase 1: Build the Foundation (3-6 months)</h3>
+        <ul>
+            <li>Master NumPy, Pandas, and Matplotlib—these are your new daily tools</li>
+            <li>Take a statistics course (Khan Academy + "Practical Statistics for Data Scientists")</li>
+            <li>Learn linear algebra basics (3Blue1Brown's Essence of Linear Algebra series is gold)</li>
+            <li>Complete Andrew Ng's Machine Learning course for conceptual foundations</li>
+        </ul>
+
+        <h3>Phase 2: Practice with Real Projects (3-6 months)</h3>
+        <ul>
+            <li>Kaggle competitions (start with "Getting Started" competitions)</li>
+            <li>Build 3-5 end-to-end projects showcasing different techniques</li>
+            <li>Contribute to open-source ML projects (scikit-learn, pandas, etc.)</li>
+            <li>Focus on explaining your work clearly through blog posts or GitHub READMEs</li>
+        </ul>
+
+        <h3>Phase 3: Specialize and Deploy (Ongoing)</h3>
+        <ul>
+            <li>Choose a specialization (NLP, computer vision, time series, etc.)</li>
+            <li>Learn deployment tools (Docker, Kubernetes, cloud ML platforms)</li>
+            <li>Build MLOps skills (experiment tracking, model versioning, monitoring)</li>
+            <li>Network through conferences, meetups, and online communities</li>
+        </ul>
+
+        <h2><i class="fas fa-exclamation-circle"></i> Common Pitfalls to Avoid</h2>
+
+        <ol>
+            <li><strong>Over-engineering early projects:</strong> Not everything needs microservices architecture. Start simple, iterate based on real needs.</li>
+            <li><strong>Ignoring the math:</strong> You can use libraries without understanding the math, but you'll hit a ceiling quickly.</li>
+            <li><strong>Tutorial hell:</strong> Taking endless courses without building projects won't get you hired. Build things.</li>
+            <li><strong>Neglecting domain knowledge:</strong> Understanding the business context is just as important as technical skills.</li>
+            <li><strong>Perfectionism:</strong> Your first models will be mediocre. Ship them, learn, iterate.</li>
+        </ol>
+
+        <h2><i class="fas fa-rocket"></i> The Verdict: Is It Worth It?</h2>
+
+        <p>Absolutely. The transition was challenging, but my engineering background proved invaluable. I'm now working on problems that fascinate me intellectually while building production systems that drive real business value.</p>
+
+        <p>If you're a software engineer considering this path, my advice is simple:</p>
+
+        <div class="highlight-box">
+            <ul>
+                <li><strong>Start now:</strong> You don't need to quit your job first. Side projects and learning can happen in parallel.</li>
+                <li><strong>Leverage your strengths:</strong> Your engineering skills are rare and valuable in data science.</li>
+                <li><strong>Be patient with the learning curve:</strong> It takes time to build statistical intuition.</li>
+                <li><strong>Build in public:</strong> Share your journey, projects, and learnings. The community is welcoming.</li>
+                <li><strong>Stay curious:</strong> The field evolves rapidly—embrace continuous learning as part of the job.</li>
+            </ul>
+        </div>
+
+        <p>The intersection of software engineering and data science is where some of the most impactful work happens. If you have the curiosity and commitment, this transition can be one of the most rewarding career moves you make.</p>
+
+        <p><strong>What's holding you back? The best time to start was yesterday. The second best time is now.</strong></p>
+    </article>
+
+    <!-- Author Section -->
+    <section class="author-section">
+        <h3><i class="fas fa-user-circle"></i> About the Author</h3>
+        <p>
+            <strong>Amr Salem</strong> is a Senior Python Engineer with 10+ years of production experience across telecommunications, healthcare, and e-commerce, currently transitioning to data science. He's completing his Post Graduate Diploma in Data Science at Cairo University (GPA: 3.63, graduating January 2026) while building a portfolio of ML projects ranging from fraud detection systems to customer analytics platforms.
+        </p>
+        <p style="margin-top: 1rem;">
+            Connect with Amr on <a href="https://www.linkedin.com/in/amrrashad/" target="_blank" style="color: var(--accent-color); font-weight: 600;">LinkedIn</a> or <a href="../index.html#contact" style="color: var(--accent-color); font-weight: 600;">reach out</a> to discuss career transitions, Python engineering, or data science projects.
+        </p>
+    </section>
+
+    <!-- Share Section -->
+    <section class="share-section">
+        <h3>Enjoyed this article? Share it!</h3>
+        <div class="share-buttons">
+            <a href="https://twitter.com/intent/tweet?text=From%20Python%20Engineer%20to%20Data%20Scientist%3A%20Lessons%20from%2010%20Years%20in%20Production&url=https://amrrsalem.github.io/blog/python-to-data-science.html" target="_blank" class="share-btn twitter">
+                <i class="fab fa-twitter"></i> Share on Twitter
+            </a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://amrrsalem.github.io/blog/python-to-data-science.html" target="_blank" class="share-btn linkedin">
+                <i class="fab fa-linkedin"></i> Share on LinkedIn
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Amr Salem. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="../assets/js/enhancements.js"></script>
+</body>
+</html>
