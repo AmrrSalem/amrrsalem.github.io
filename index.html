@@ -2952,6 +2952,12 @@
                     }, index * 200);
                 }
             });
+        };
+
+        window.addEventListener('scroll', animateTimeline);
+        window.addEventListener('load', animateTimeline);
+    </script>
+
     <!-- AOS Library JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
@@ -2961,14 +2967,9 @@
             offset: 100
         });
     </script>
-    
+
     <!-- Custom Enhancements JS -->
     <script src="assets/js/skills-chart.js"></script>
     <script src="assets/js/enhancements.js"></script>
-        };
-
-        window.addEventListener('scroll', animateTimeline);
-        window.addEventListener('load', animateTimeline);
-    </script>
 </body>
 </html>
